@@ -28,14 +28,31 @@ def print_private_key(d, n):
 
 
 def cipher(msg, n):
-    return (msg ** e) % n
+    cipher_msg = []
+    for cm in msg:
+        cipher_msg.append((cm ** e) % n)
+    return cipher_msg
+
+
+# def decipher(c, d):
+#     return (c ** d) % n
+
+
+def char_to_ASCII(char):
+    return ord(char)
+
+def convert_char_msg_to_ASCII_msg(char_msg):
+    ascii_msg = []
+    for c in char_msg:
+        ascii_msg.append(char_to_ASCII(c))
+    return ascii_msg
 
 p = 11
 q = 3
 n = p * q
 phi = (p-1)*(q-1)
 exclude_e = []
-msg = 4
+char_msg = list("Hello World")
 
 generate_exclude_e(exclude_e, phi)
 
@@ -45,8 +62,9 @@ while True:
     if (e * d) - phi == 1:
         break
 
-c = cipher(msg, n)
-# decipher()
+msg = convert_char_msg_to_ASCII_msg(char_msg)
+cipher_msg = cipher(msg, n)
+# decMsg = decipher(cipher_msg, d)
 
 print_public_key(e, n)
 print_private_key(d, n)
@@ -55,4 +73,5 @@ print("n: " + str(n))
 print("phi: " + str(phi))
 print("e: " + str(e))
 print("d: ", d)
-print("cipher: ", c)
+print("cipher: ", cipher_msg)
+# print("decipher: ", decMsg)
