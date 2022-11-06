@@ -1,6 +1,3 @@
-import random
-
-
 def is_prime(n):
     for i in range(2, n):
         if (n % i) == 0:
@@ -75,7 +72,6 @@ msgList = msg.split(" ")
 
 msgList = [int(m) for m in msgList]
 
-# cipher_msg = cipher(msg, n)
 decMsg = convert_ASCII_msg_to_char_msg(decipher(msgList, d))
 finalMsg = "".join(decMsg)
 
@@ -88,3 +84,5 @@ print("e: " + str(e))
 print("d: ", d)
 print("decipher: ", str(decMsg))
 print(finalMsg)
+
+print(cipher(convert_char_msg_to_ASCII_msg(decMsg), n))
