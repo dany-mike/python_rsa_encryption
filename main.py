@@ -1,7 +1,8 @@
+p = 11
+q = 3
+n = p * q
+phi = (p-1)*(q-1)
 
-p = 5
-q = 7
-
-encryption_module = p * q
-
-print(encryption_module)
+print("p: " + str(p) + " q: " + str(q))
+print("n: " + str(n))
+print("phi: " + str(phi))
