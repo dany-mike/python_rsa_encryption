@@ -14,6 +14,7 @@ def give_e_value(exclude_e, phi):
             break
     return e
 
+
 def give_d_value(phi):
     return random.randrange(2, phi)
 
@@ -21,14 +22,20 @@ def give_d_value(phi):
 def print_public_key(e, n):
     print("Public key: (e=" + str(e) + ", n=" + str(n) + ")")
 
+
 def print_private_key(d, n):
     print("Private key: (d=" + str(d) + ", n=" + str(n) + ")")
+
+
+def cipher(msg, n):
+    return (msg ** e) % n
 
 p = 11
 q = 3
 n = p * q
 phi = (p-1)*(q-1)
 exclude_e = []
+msg = 4
 
 generate_exclude_e(exclude_e, phi)
 
@@ -38,6 +45,9 @@ while True:
     if (e * d) - phi == 1:
         break
 
+c = cipher(msg, n)
+# decipher()
+
 print_public_key(e, n)
 print_private_key(d, n)
 print("p: " + str(p) + " q: " + str(q))
@@ -45,3 +55,4 @@ print("n: " + str(n))
 print("phi: " + str(phi))
 print("e: " + str(e))
 print("d: ", d)
+print("cipher: ", c)
